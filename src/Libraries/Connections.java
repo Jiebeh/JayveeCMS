@@ -206,7 +206,7 @@ public class Connections {
 
         String updateQuery;
 
-        if (contact.isPictureNull()) {
+        if (contact.picture.length > 0) {
             updateQuery = "UPDATE `contacts` SET `firstName`=?,`lastName`=?,`label`=?,`phone`=?,`email`=?,`address`=?,`picture`=?,`userId`=? WHERE id = " + contact.id;
         } else {
             updateQuery = "UPDATE `contacts` SET `firstName`=?,`lastName`=?,`label`=?,`phone`=?,`email`=?,`address`=?,`userId`=? WHERE id = " + contact.id;
@@ -221,7 +221,7 @@ public class Connections {
             preparedstatement.setString(5, contact.email);
             preparedstatement.setString(6, contact.address);
 
-            if (contact.isPictureNull()) {
+            if (contact.picture.length > 0) {
                 preparedstatement.setBytes(7, contact.picture);
                 preparedstatement.setInt(8, contact.userId);
             } else {
